@@ -76,7 +76,7 @@ export default {
               this.registrationSuccess = false
               this.isRegistering = false;
               this.$router.push("/login");
-          },5000) 
+          },1000) 
         })
         .catch((error) => {
           console.error("Error:", error);

@@ -18,6 +18,12 @@
 
       <!-- Tombol Daftar -->
       <div class="text-center">
+          <div
+          v-if="loginSuccess"
+          class="my-2 text-sm text-green-700 bg-green-100 border border-green-300 py-1 px-3 rounded"
+        >
+          Login Berhasil
+        </div>
         <button
           @click="login"
           :disabled="isLogin"
@@ -28,12 +34,6 @@
         </button>
       </div>
         <!-- Pemberitahuan (alert) -->
-        <div
-        v-if="loginSuccess"
-        class="my-2 text-sm text-green-700 bg-green-100 border border-green-300 py-1 px-3 rounded"
-      >
-        Login Berhasil
-      </div>
     </div>
   </div>
   </template>
@@ -79,7 +79,7 @@
   
               // Redirect ke halaman lain jika diperlukan
               this.$router.push("/");
-            }, 5000);
+            }, 1000);
           })
           .catch((error) => {
             console.error("Error:", error);
