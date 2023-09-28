@@ -1,6 +1,6 @@
 
 <template>
-    <div class="bg-green-400 min-h-screen flex justify-center items-center">
+    <div class="bg-blue-500 min-h-screen flex justify-center items-center">
         <div class="w-full sm:w-96 p-6 bg-slate-100 rounded shadow-sm shadow-black">
         <h1 class="text-3xl font-bold mb-6 text-center">Login</h1>
 
@@ -39,7 +39,7 @@
   </template>
   
   <script>
-  import axios from "axios"; // Import axios
+  import axios from "axios";
   
   export default {
     name: "Login",
@@ -59,7 +59,7 @@
   
         console.log("Data Login:", this.formData);
   
-        // Kirim data ke API
+        // Kirim data ke API untuk login
         axios
           .post("http://127.0.0.1:8000/api/auth/login", this.formData)
           .then((response) => {
@@ -67,6 +67,9 @@
   
             // Simpan access token ke localStorage
             localStorage.setItem("accessToken", response.data.access_token);
+  
+            // Setelah berhasil login, buat permintaan HTTP untuk mengambil data pengguna
+            this.fetchUserData();
   
             // Menampilkan alert
             this.loginSuccess = true;
@@ -83,9 +86,25 @@
             this.isLogin = false;
           });
       },
+      fetchUserData() {
+        const token = localStorage.getItem("accessToken");
+  
+        if (token) {
+          axios
+            .get("http://127.0.0.1:8000/api/auth/user", {
+              headers: {
+                Authorization: `Bearer ${token}`, 
+              },
+            })
+            
+            .catch((error) => {
+            });
+        }
+      },
     },
   };
   </script>
+  
   
   <style scoped>
   .form-input {

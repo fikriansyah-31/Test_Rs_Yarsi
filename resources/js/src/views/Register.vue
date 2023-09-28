@@ -1,6 +1,6 @@
 
 <template>
-    <div class="bg-green-400 min-h-screen flex justify-center items-center">
+    <div class="bg-blue-500 min-h-screen flex justify-center items-center">
         <div class="w-full sm:w-96 p-6 bg-slate-100 rounded shadow-sm shadow-black">
         <h1 class="text-3xl font-bold mb-6 text-center">Register</h1>
       <!-- Nama -->
